@@ -1,7 +1,7 @@
 # Use a full-featured base image with Docker + Compose installed
 FROM docker/compose:1.29.2
 
-WORKDIR /app
+WORKDIR /
 
 # Copy project files into the container
 COPY . .
