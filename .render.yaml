@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: social-media-microservices
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: REDIS_URL
+        value: redis://redis:6379
+      - key: RABBITMQ_URL
+        value: amqps://dkvabztd:WJ2xAz-kC7dmPWQ4ECdN0Np2MrFl3Ftt@rabbit.lmq.cloudamqp.com/dkvabztd
+      - key: JWT_SECRET
+        value: JWTJWT
+      - key: MONGODB_URI
+        value: mongodb+srv://99269dhruvpatel:Dhruv99269@node-tuts.cc8rxtp.mongodb.net/social-media-backend
+      - key: cloud_name
+        value: duhorppki
+      - key: api_key
+        value: 757198514853339
+      - key: api_secret
+        value: 3Cx8lUWzYVZKsV6z0uVtxVqM3oA
