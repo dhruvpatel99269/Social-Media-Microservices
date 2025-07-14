@@ -1,15 +1,10 @@
-# syntax=docker/dockerfile:1
-
-FROM docker:24.0.5-cli
-
-# Install docker-compose and dependencies
-RUN apk add --no-cache py3-pip python3 curl && \
-    pip install docker-compose
+# Use a full-featured base image with Docker + Compose installed
+FROM docker/compose:1.29.2
 
 WORKDIR /app
 
-# Copy entire repo
+# Copy project files into the container
 COPY . .
 
-# Run all services using docker-compose
+# Run the Docker Compose app
 CMD ["docker-compose", "up"]
