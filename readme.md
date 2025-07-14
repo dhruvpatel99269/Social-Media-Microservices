@@ -17,7 +17,6 @@ A full-featured, scalable microservices architecture built with **Node.js**, **D
 * [⚙️ CI/CD Pipeline](#cicd-pipeline)
 * [🧰 Troubleshooting](#troubleshooting)
 * [🤝 Contributing](#contributing)
-* [📄 License](#license)
 
 ---
 
@@ -230,13 +229,6 @@ git push origin feature/<feature-name>
 ```
 
 4. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the **ISC License**.
-You are free to use, modify, and distribute it with proper attribution.
 
 ---
 
