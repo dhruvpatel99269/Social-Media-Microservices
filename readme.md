@@ -1,4 +1,4 @@
-# Node.js Microservices 2025
+# Social Media Microservices Backend
 
 A full-featured, scalable microservices architecture built with **Node.js**, **Docker**, **RabbitMQ**, **MongoDB**, and **GitHub Actions**. This project demonstrates how to structure, containerize, communicate, and deploy distributed services efficiently, following best practices in DevOps and modern backend engineering.
 
