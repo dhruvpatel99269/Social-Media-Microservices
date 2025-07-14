@@ -1,0 +1,115 @@
+services:
+  - type: web
+    name: api-gateway
+    env: docker
+    dockerContext: ./api-gateway
+    dockerfilePath: ./api-gateway/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+      - key: IDENTITY_SERVICE_URL
+        value: https://identity-service.onrender.com
+      - key: POST_SERVICE_URL
+        value: https://post-service.onrender.com
+      - key: MEDIA_SERVICE_URL
+        value: https://media-service.onrender.com
+      - key: SEARCH_SERVICE_URL
+        value: https://search-service.onrender.com
+      - key: REDIS_URL
+        value: redis://redis:6379
+      - key: JWT_SECRET
+        value: JWTJWT
+
+  - type: web
+    name: identity-service
+    env: docker
+    dockerContext: ./identity-service
+    dockerfilePath: ./identity-service/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        value: JWTJWT
+      - key: MONGODB_URI
+        value: mongodb+srv://99269dhruvpatel:Dhruv99269@node-tuts.cc8rxtp.mongodb.net/social-media-backend
+      - key: REDIS_URL
+        value: redis://redis:6379
+
+  - type: web
+    name: post-service
+    env: docker
+    dockerContext: ./post-service
+    dockerfilePath: ./post-service/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 3002
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        value: JWTJWT
+      - key: MONGODB_URI
+        value: mongodb+srv://99269dhruvpatel:Dhruv99269@node-tuts.cc8rxtp.mongodb.net/social-media-backend
+      - key: REDIS_URL
+        value: redis://redis:6379
+      - key: RABBITMQ_URL
+        value: amqps://dkvabztd:WJ2xAz-kC7dmPWQ4ECdN0Np2MrFl3Ftt@rabbit.lmq.cloudamqp.com/dkvabztd
+
+  - type: web
+    name: media-service
+    env: docker
+    dockerContext: ./media-service
+    dockerfilePath: ./media-service/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 3003
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        value: mongodb+srv://99269dhruvpatel:Dhruv99269@node-tuts.cc8rxtp.mongodb.net/social-media-backend
+      - key: cloud_name
+        value: duhorppki
+      - key: api_key
+        value: 757198514853339
+      - key: api_secret
+        value: 3Cx8lUWzYVZKsV6z0uVtxVqM3oA
+      - key: RABBITMQ_URL
+        value: amqps://dkvabztd:WJ2xAz-kC7dmPWQ4ECdN0Np2MrFl3Ftt@rabbit.lmq.cloudamqp.com/dkvabztd
+
+  - type: web
+    name: search-service
+    env: docker
+    dockerContext: ./search-service
+    dockerfilePath: ./search-service/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 3004
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        value: mongodb+srv://99269dhruvpatel:Dhruv99269@node-tuts.cc8rxtp.mongodb.net/social-media-backend
+      - key: RABBITMQ_URL
+        value: amqps://dkvabztd:WJ2xAz-kC7dmPWQ4ECdN0Np2MrFl3Ftt@rabbit.lmq.cloudamqp.com/dkvabztd
+      - key: REDIS_URL
+        value: redis://redis:6379
+
+databases:
+  - name: redis
+    databaseName: redis
+    user: default
+    plan: free
+    ipAllowList: []
+
+  - name: rabbitmq
+    databaseName: rabbitmq
+    user: guest
+    plan: free
+    ipAllowList: []
