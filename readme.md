@@ -249,5 +249,3 @@ This project gave me hands-on experience with:
 * RabbitMQ event-driven communication
 * CI/CD pipelines with GitHub Actions
 * Environment management with Render
-
-Use this as a **boilerplate** or a **learning tool** for building production-ready Node.js systems.
