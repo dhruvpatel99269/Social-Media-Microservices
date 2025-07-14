@@ -1,10 +1,22 @@
-# Use a full-featured base image with Docker + Compose installed
-FROM docker/compose:1.29.2
+FROM node:18-alpine
 
-WORKDIR /
+WORKDIR /app
 
-# Copy project files into the container
+# Install supervisord to run multiple processes
+RUN apk add --no-cache supervisor
+
+# Copy the whole project
 COPY . .
 
-# Run the Docker Compose app
-CMD ["docker-compose", "up"]
+# Install dependencies for each service
+RUN cd api-gateway && npm install && cd ..
+RUN cd identity-service && npm install && cd ..
+RUN cd post-service && npm install && cd ..
+RUN cd media-service && npm install && cd ..
+RUN cd search-service && npm install && cd ..
+
+# Copy the supervisor configuration file
+COPY supervisord.conf /etc/supervisord.conf
+
+# Start all services
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
