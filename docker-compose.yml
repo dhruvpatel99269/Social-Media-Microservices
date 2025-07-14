@@ -4,8 +4,7 @@ services:
   api-gateway:
     build: ./api-gateway
     ports:
-      - "8000:8000"
-    env_file: ./api-gateway/.env
+      - "8000:8000"    
     depends_on:
       - redis
       - rabbitmq
@@ -14,8 +13,7 @@ services:
       - RABBITMQ_URL=amqps://dkvabztd:WJ2xAz-kC7dmPWQ4ECdN0Np2MrFl3Ftt@rabbit.lmq.cloudamqp.com/dkvabztd
 
   identity-service:
-    build: ./identity-service
-    env_file: ./identity-service/.env
+    build: ./identity-service    
     depends_on:
       - redis
       - rabbitmq
@@ -24,8 +22,7 @@ services:
       - RABBITMQ_URL=amqps://dkvabztd:WJ2xAz-kC7dmPWQ4ECdN0Np2MrFl3Ftt@rabbit.lmq.cloudamqp.com/dkvabztd
 
   post-service:
-    build: ./post-service
-    env_file: ./post-service/.env
+    build: ./post-service    
     depends_on:
       - redis
       - rabbitmq
@@ -34,8 +31,7 @@ services:
       - RABBITMQ_URL=amqps://dkvabztd:WJ2xAz-kC7dmPWQ4ECdN0Np2MrFl3Ftt@rabbit.lmq.cloudamqp.com/dkvabztd
 
   media-service:
-    build: ./media-service
-    env_file: ./media-service/.env
+    build: ./media-service    
     depends_on:
       - redis
       - rabbitmq
@@ -44,8 +40,7 @@ services:
       - RABBITMQ_URL=amqps://dkvabztd:WJ2xAz-kC7dmPWQ4ECdN0Np2MrFl3Ftt@rabbit.lmq.cloudamqp.com/dkvabztd
 
   search-service:
-    build: ./search-service
-    env_file: ./search-service/.env
+    build: ./search-service    
     depends_on:
       - redis
       - rabbitmq
