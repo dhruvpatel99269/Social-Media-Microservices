@@ -27,7 +27,7 @@ pipeline {
                 dir("${params.SERVICE}") {
                     script {
                         // Make sure Node.js is installed or use NodeJS plugin if needed
-                        sh 'npm install'
+                        bat 'npm install'
                     }
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 dir("${params.SERVICE}") {
-                    sh "docker build -t ${params.SERVICE}:latest ."
+                    bat "docker build -t ${params.SERVICE}:latest ."
                 }
             }
         }
