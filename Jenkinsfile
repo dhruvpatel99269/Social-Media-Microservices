@@ -2,7 +2,11 @@ pipeline {
     agent any
 
     parameters {
-        choice(name: 'SERVICE', choices: ['api-gateway', 'identity-service', 'post-service', 'media-service', 'search-service'], description: 'Select microservice')
+        choice(
+            name: 'SERVICE',
+            choices: ['api-gateway', 'identity-service', 'post-service', 'media-service', 'search-service'],
+            description: 'Select the microservice to build'
+        )
     }
 
     environment {
@@ -12,7 +16,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/yourusername/yourrepo.git'
+                git credentialsId: 'github-pat',
+                    url: 'https://github.com/dhruvpatel99269/Social-Media-Microservices.git',
+                    branch: 'master'
             }
         }
 
@@ -20,6 +26,7 @@ pipeline {
             steps {
                 dir("${params.SERVICE}") {
                     script {
+                        // Make sure Node.js is installed or use NodeJS plugin if needed
                         sh 'npm install'
                     }
                 }
